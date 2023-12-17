@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          default label: master
+          default label: main
           uri: https://github.com/dhorol/Tingeso_proyecto4
           search-paths: "config-data"
 
