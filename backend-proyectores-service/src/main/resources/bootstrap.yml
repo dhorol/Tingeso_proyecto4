@@ -1,0 +1,27 @@
+spring:
+  devtools:
+    restart:
+      aditional-paths: src/main/java
+  application:
+    name: backend-proyectores-service
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
+  datasource:
+    plataform: postgres
+    driver-class-name: org.postgresql.Driver
+    dbname: proyectores-service
+    url: jdbc:postgresql://localhost:5432/proyectores-service
+    username: postgres
+    password: shinis
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
