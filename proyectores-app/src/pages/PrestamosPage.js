@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPrestamos, createPrestamo } from '../services/prestamoService';
+import { getPrestamos, createPrestamo } from '../services/prestamosService';
 import PrestamoForm from '../components/PrestamoForm';
 import PrestamoList from '../components/PrestamoList';
 

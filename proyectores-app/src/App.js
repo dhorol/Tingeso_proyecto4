@@ -1,23 +1,27 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import ManageProyectores from './pages/ManageProyectores';
-import ManagePrestamos from './pages/ManagePrestamos';
+import ProyectoresPage from './pages/ProyectoresPage';
 import ProfesoresPage from './pages/ProfesoresPage';
+import PrestamosPage from './pages/PrestamosPage';
+import DevolucionesPage from './pages/DevolucionesPage';
+
+
+// Importa otros componentes necesarios
 
 function App() {
-  return (
-      <Router>
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/proyectores" component={ManageProyectores} />
-            <Route path="/profesores" component={ProfesoresPage} />
-          <Route path="/prestamos" component={ManagePrestamos} />
-          {/* Más rutas según sea necesario */}
-        </Switch>
-      </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/proyectores" element={<ProyectoresPage />} />
+                <Route path="/profesores" element={<ProfesoresPage />} />
+                <Route path="/prestamos" element={<PrestamosPage />} />
+                <Route path="/devoluciones" element={<DevolucionesPage />} />
+                {/* ... otras rutas ... */}
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

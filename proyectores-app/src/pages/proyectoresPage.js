@@ -14,7 +14,12 @@ const ProyectoresPage = () => {
         fetchData();
     }, []);
 
-    return <ProyectorList proyectores={proyectores} />;
+    return (
+        <div>
+            <h2>Gestión de Proyectores</h2>
+            <ProyectorList proyectores={proyectores} />
+        </div>
+    );
 };
 
 export default ProyectoresPage;
