@@ -1,4 +1,4 @@
-package com.example.backendproyectoresservice.service;
+package com.example.backendproyectoresservice.services;
 
 import com.example.backendproyectoresservice.entities.DataProyectoresEntity;
 import com.example.backendproyectoresservice.repositories.DataProyectoresRepository;
@@ -17,5 +17,17 @@ public class DataProyectoresService {
         return dataProyectoresRepository.findAll();
     }
 
-    // Aquí se pueden agregar más métodos como addProyector, updateProyector, etc.
+    public DataProyectoresEntity addProyector(DataProyectoresEntity proyector) {
+        return dataProyectoresRepository.save(proyector);
+    }
+    public DataProyectoresEntity updateProyector(Long proyectorId, DataProyectoresEntity proyectorDetails) {
+        DataProyectoresEntity proyector = dataProyectoresRepository.findById(proyectorId)
+                .orElseThrow(() -> new RuntimeException("Proyector no encontrado con id: " + proyectorId));
+
+        proyector.setEstado(proyectorDetails.getEstado());
+        return dataProyectoresRepository.save(proyector);
+    }
+
+
+
 }

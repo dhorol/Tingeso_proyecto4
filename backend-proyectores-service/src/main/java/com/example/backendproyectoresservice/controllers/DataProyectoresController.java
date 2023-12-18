@@ -1,7 +1,7 @@
 package com.example.backendproyectoresservice.controllers;
 
 import com.example.backendproyectoresservice.entities.DataProyectoresEntity;
-import com.example.backendproyectoresservice.service.DataProyectoresService;
+import com.example.backendproyectoresservice.services.DataProyectoresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +19,15 @@ public class DataProyectoresController {
         return dataProyectoresService.getAllProyectores();
     }
 
-    // Aquí se pueden agregar más endpoints como POST para agregar un proyector, etc.
+    @PostMapping
+    public DataProyectoresEntity addProyector(@RequestBody DataProyectoresEntity proyector) {
+        return dataProyectoresService.addProyector(proyector);
+    }
+    @PutMapping("/{id}")
+    public DataProyectoresEntity updateProyector(@PathVariable Long id, @RequestBody DataProyectoresEntity proyectorDetails) {
+        return dataProyectoresService.updateProyector(id, proyectorDetails);
+    }
+
+
+
 }
