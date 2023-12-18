@@ -1,8 +1,8 @@
 spring:
   application:
-    name: backend-eureka-service
+    name: backend-gateway-service
   cloud:
     config:
       enabled: true
-      uri: https://localhost:8081
+      uri: http://localhost:8081
 
