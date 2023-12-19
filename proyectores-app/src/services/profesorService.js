@@ -10,6 +10,21 @@ const getProfesores = async () => {
         console.error('Error al obtener los profesores', error);
     }
 };
+const addProfesor = async (profesorData) => {
+    try {
+        const response = await axios.post(API_URL, profesorData);
+        return response.data;
+    } catch (error) {
+        console.error('Error al añadir el profesor', error);
+    }
+};
 
-// Exporta las funciones para usarlas en tus componentes
-export { getProfesores };
+const deleteProfesor = async (id) => {
+    try {
+        await axios.delete(`${API_URL}/${id}`);
+    } catch (error) {
+        console.error('Error al eliminar el profesor', error);
+    }
+};
+
+export { getProfesores, addProfesor, deleteProfesor };

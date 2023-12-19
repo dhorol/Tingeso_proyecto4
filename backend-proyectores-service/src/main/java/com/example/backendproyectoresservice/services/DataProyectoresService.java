@@ -28,6 +28,20 @@ public class DataProyectoresService {
         return dataProyectoresRepository.save(proyector);
     }
 
+    public void deleteProyector(Long proyectorId) {
+        dataProyectoresRepository.deleteById(proyectorId);
+    }
+
+    public void updateDisponibilidad(Long proyectorId, boolean disponibilidad) {
+        DataProyectoresEntity proyector = dataProyectoresRepository.findById(proyectorId)
+                .orElseThrow(() -> new RuntimeException("Proyector no encontrado con id: " + proyectorId));
+        proyector.setDisponible(disponibilidad);
+        dataProyectoresRepository.save(proyector);
+    }
+
+
+
+
 
 
 }

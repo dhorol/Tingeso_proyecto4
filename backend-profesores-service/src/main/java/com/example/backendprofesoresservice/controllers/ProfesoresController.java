@@ -4,6 +4,7 @@ package com.example.backendprofesoresservice.controllers;
 import com.example.backendprofesoresservice.entities.ProfesoresEntity;
 import com.example.backendprofesoresservice.services.ProfesoresService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,5 +21,15 @@ public class ProfesoresController {
         return profesoresService.getAllProfesores();
     }
 
-    // Endpoints adicionales como POST para añadir un profesor, etc.
+    @PostMapping
+    public ProfesoresEntity addProfesor(@RequestBody ProfesoresEntity profesor) {
+        return profesoresService.addProfesor(profesor);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProfesor(@PathVariable Long id) {
+        profesoresService.deleteProfesor(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

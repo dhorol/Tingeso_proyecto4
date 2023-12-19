@@ -6,6 +6,7 @@ import com.example.backendPyDservice.entities.DevolucionEntity;
 import com.example.backendPyDservice.services.PrestamoService;
 import com.example.backendPyDservice.services.DevolucionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +23,19 @@ public class PyDController {
 
     // Endpoint para registrar un nuevo préstamo
     @PostMapping("/prestamos")
-    public PrestamoEntity createPrestamo(@RequestBody PrestamoEntity prestamo) {
-        return prestamoService.createPrestamo(prestamo);
+    public ResponseEntity<PrestamoEntity> createPrestamo(@RequestBody PrestamoEntity prestamo) {
+        try {
+            PrestamoEntity newPrestamo = prestamoService.createPrestamo(prestamo);
+            return ResponseEntity.ok(newPrestamo);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null); // Considerar una mejor gestión de excepciones
+        }
+    }
+
+    // Endpoint para obtener todos los préstamos
+    @GetMapping("/prestamos")
+    public List<PrestamoEntity> getAllPrestamos() {
+        return prestamoService.getAllPrestamos();
     }
 
     // Endpoint para registrar una nueva devolución

@@ -13,14 +13,14 @@ const ProyectorForm = ({ onAddProyector }) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Marca:</label>
-                <select value={marca} onChange={(e) => setMarca(e.target.value)}>
+                <select name="marca" value={marca} onChange={(e) => setMarca(e.target.value)}>
                     <option value="EPSON">EPSON</option>
                     <option value="ViewSonic">ViewSonic</option>
                 </select>
             </div>
             <div>
                 <label>Estado:</label>
-                <select value={estado} onChange={(e) => setEstado(e.target.value)}>
+                <select name="estado" value={estado} onChange={(e) => setEstado(e.target.value)}>
                     <option value="Nuevo">Nuevo</option>
                     <option value="Con Daños">Con Daños</option>
                 </select>

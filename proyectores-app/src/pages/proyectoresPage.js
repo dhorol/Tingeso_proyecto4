@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProyectores, addProyector, updateProyector } from '../services/proyectorService';
+import { getProyectores, addProyector, updateProyector, deleteProyector, updateDisponibilidad } from '../services/proyectorService';
 import ProyectorList from '../components/ProyectorList';
 import ProyectorForm from '../components/ProyectorForm';
 
@@ -11,12 +11,11 @@ const ProyectoresPage = () => {
             const data = await getProyectores();
             setProyectores(data);
         };
-
         fetchData();
     }, []);
 
     const handleAddProyector = async (proyectorData) => {
-        const newProyector = await addProyector(proyectorData);
+        const newProyector = await addProyector({ ...proyectorData, disponible: true });
         setProyectores([...proyectores, newProyector]);
     };
 
@@ -28,6 +27,20 @@ const ProyectoresPage = () => {
         }
     };
 
+    // ... imports y definiciones anteriores ...
+
+    const handleDeleteProyector = async (id) => {
+        await deleteProyector(id);
+        setProyectores(proyectores.filter(p => p.id !== id));
+    };
+
+    const handleUpdateDisponibilidad = async (id, disponible) => {
+        await updateDisponibilidad(id, disponible);
+        setProyectores(proyectores.map(proyector =>
+            proyector.id === id ? { ...proyector, disponible: disponible } : proyector
+        ));
+    };
+
     return (
         <div>
             <h2>Gestión de Proyectores</h2>
@@ -35,6 +48,8 @@ const ProyectoresPage = () => {
             <ProyectorList
                 proyectores={proyectores}
                 onUpdateProyector={handleUpdateProyector}
+                onDeleteProyector={handleDeleteProyector}
+                onUpdateDisponibilidad={handleUpdateDisponibilidad}
             />
         </div>
     );

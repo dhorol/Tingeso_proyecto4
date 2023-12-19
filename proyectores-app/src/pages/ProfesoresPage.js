@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getProfesores } from '../services/profesorService';
+import { getProfesores, addProfesor, deleteProfesor } from '../services/profesorService';
+import ProfesorList from '../components/ProfesorList';
+import ProfesorForm from '../components/ProfesorForm';
 
 const ProfesoresPage = () => {
     const [profesores, setProfesores] = useState([]);
@@ -13,29 +15,24 @@ const ProfesoresPage = () => {
         fetchData();
     }, []);
 
+    const handleAddProfesor = async (profesorData) => {
+        const newProfesor = await addProfesor(profesorData);
+        setProfesores([...profesores, newProfesor]);
+    };
+
+    const handleDeleteProfesor = async (id) => {
+        await deleteProfesor(id);
+        setProfesores(profesores.filter(p => p.id !== id));
+    };
+
     return (
         <div>
             <h2>Lista de Profesores</h2>
-            <table className="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Departamento</th>
-                    {/* Agrega más columnas según los datos de los profesores */}
-                </tr>
-                </thead>
-                <tbody>
-                {profesores.map(profesor => (
-                    <tr key={profesor.id}>
-                        <td>{profesor.id}</td>
-                        <td>{profesor.nombre}</td>
-                        <td>{profesor.departamento}</td>
-                        {/* Agrega más celdas según los datos de los profesores */}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            <ProfesorForm onAddProfesor={handleAddProfesor} />
+            <ProfesorList
+                profesores={profesores}
+                onDeleteProfesor={handleDeleteProfesor}
+            />
         </div>
     );
 };

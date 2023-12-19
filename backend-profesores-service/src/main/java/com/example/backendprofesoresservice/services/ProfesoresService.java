@@ -18,5 +18,12 @@ public class ProfesoresService {
         return profesorRepository.findAll();
     }
 
-    // Más métodos como addProfesor, updateProfesor, etc.
+    public ProfesoresEntity addProfesor(ProfesoresEntity profesor) {
+        return profesorRepository.save(profesor);
+    }
+
+    public void deleteProfesor(Long profesorId) {
+        profesorRepository.deleteById(profesorId);
+    }
+
 }

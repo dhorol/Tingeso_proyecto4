@@ -18,5 +18,6 @@ public class DataProyectoresEntity {
     private Long id;
     private String marca;
     private String estado;
+    private boolean disponible = true;
 
 }

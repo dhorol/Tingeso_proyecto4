@@ -28,4 +28,19 @@ const updateProyector = async (id, proyector) => {
     }
 };
 
-export { getProyectores, addProyector, updateProyector };
+const deleteProyector = async (id) => {
+    try {
+        await axios.delete(`${API_URL}/${id}`);
+    } catch (error) {
+        console.error('Error al eliminar el proyector', error);
+    }
+};
+const updateDisponibilidad = async (id, disponible) => {
+    try {
+        await axios.patch(`${API_URL}/${id}/disponibilidad?disponible=${disponible}`);
+    } catch (error) {
+        console.error('Error al actualizar la disponibilidad del proyector', error);
+    }
+};
+
+export { getProyectores, addProyector, updateProyector, deleteProyector, updateDisponibilidad };
