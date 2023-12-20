@@ -1,0 +1,69 @@
+/* ProyectoresPage.css */
+.proyectores-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.titulo-container {
+    text-align: center;
+    background-color: #add8e6;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+.proyector-form, .proyector-list {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+}
+
+.proyector-list h2, .proyector-form h2 {
+    color: #333;
+    text-align: center;
+    background-color: #add8e6;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #add8e6;
+}

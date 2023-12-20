@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Profesores")
@@ -19,5 +20,8 @@ public class ProfesoresEntity {
     private Long id;
     private String nombre;
     private String departamento;
-    // Puedes agregar otros campos como email, etc.
+    private boolean habilitado = true; // Por defecto todos los profesores están habilitados
+    private int contadorDanos = 0; // Contador para los proyectores dañados
+    private LocalDateTime fechaRehabilitacion;
+
 }

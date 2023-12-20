@@ -1,6 +1,9 @@
 import React from 'react';
 
 const ProyectorList = ({ proyectores, onUpdateProyector, onDeleteProyector }) => {
+    if (!proyectores) {
+        return <div>Cargando proyectores...</div>;
+    }
     return (
         <div>
             <h2>Lista de Proyectores</h2>

@@ -5,7 +5,9 @@ import com.example.backendproyectoresservice.repositories.DataProyectoresReposit
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
+
 
 @Service
 public class DataProyectoresService {
@@ -32,12 +34,44 @@ public class DataProyectoresService {
         dataProyectoresRepository.deleteById(proyectorId);
     }
 
-    public void updateDisponibilidad(Long proyectorId, boolean disponibilidad) {
+
+    public DataProyectoresEntity cambiarDisponibilidad(Long proyectorId, boolean disponible) {
         DataProyectoresEntity proyector = dataProyectoresRepository.findById(proyectorId)
                 .orElseThrow(() -> new RuntimeException("Proyector no encontrado con id: " + proyectorId));
-        proyector.setDisponible(disponibilidad);
-        dataProyectoresRepository.save(proyector);
+
+        proyector.setDisponible(disponible);
+        return dataProyectoresRepository.save(proyector);
     }
+
+    public DataProyectoresEntity findById(Long proyectorId) {
+        return dataProyectoresRepository.findById(proyectorId).orElse(null);
+    }
+
+    public boolean isValidUsageForProyector(Long proyectorId, String uso) {
+        DataProyectoresEntity proyector = findById(proyectorId);
+        if (proyector == null) {
+            throw new RuntimeException("Proyector no encontrado con id: " + proyectorId);
+        }
+
+        String marca = proyector.getMarca();
+        switch (marca) {
+            case "EPSON":
+                return "Dictado de Clases".equals(uso) || "Exámenes de Título".equals(uso);
+            case "ViewSonic":
+                return "Reuniones Varias".equals(uso);
+            default:
+                return false; // O cualquier lógica que desees para marcas no especificadas
+        }
+    }
+
+    public DataProyectoresEntity cambiarEstadoProyector(Long id, String nuevoEstado) {
+        DataProyectoresEntity proyector = dataProyectoresRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Proyector no encontrado con id: " + id));
+
+        proyector.setEstado(nuevoEstado);
+        return dataProyectoresRepository.save(proyector);
+    }
+
 
 
 

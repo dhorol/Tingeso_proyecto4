@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { getPrestamos, createPrestamo } from '../services/prestamosService';
+import React from 'react';
+
+import { createPrestamo } from '../services/prestamosService';
 import PrestamoForm from '../components/PrestamoForm';
-import PrestamoList from '../components/PrestamoList';
+
 
 const PrestamosPage = () => {
-    const [prestamos, setPrestamos] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await getPrestamos();
-            setPrestamos(data);
-        };
-        fetchData();
-    }, []);
-
     const handleAddPrestamo = async (prestamoData) => {
-        const newPrestamo = await createPrestamo(prestamoData);
-        setPrestamos([...prestamos, newPrestamo]);
+        try {
+            await createPrestamo(prestamoData);
+        } catch (error) {
+            console.error('Error al agregar un préstamo', error);
+        }
     };
 
     return (
-        <div>
-            <h2>Gestión de Préstamos</h2>
+        <div className="prestamos-container">
+            <div className="titulo-prestamos">
+                <h2>Gestión de Préstamos</h2>
+            </div>
             <PrestamoForm onAddPrestamo={handleAddPrestamo} />
-            <PrestamoList prestamos={prestamos} />
         </div>
     );
 };

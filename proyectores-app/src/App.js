@@ -5,6 +5,7 @@ import ProyectoresPage from './pages/ProyectoresPage';
 import ProfesoresPage from './pages/ProfesoresPage';
 import PrestamosPage from './pages/PrestamosPage';
 import DevolucionesPage from './pages/DevolucionesPage';
+import ReportesPage from './pages/ReportesPage';
 
 
 // Importa otros componentes necesarios
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/profesores" element={<ProfesoresPage />} />
                 <Route path="/prestamos" element={<PrestamosPage />} />
                 <Route path="/devoluciones" element={<DevolucionesPage />} />
+                <Route path="/reportes" element={<ReportesPage />} />
                 {/* ... otras rutas ... */}
             </Routes>
         </Router>

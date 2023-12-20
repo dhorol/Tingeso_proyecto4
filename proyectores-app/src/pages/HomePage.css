@@ -1,0 +1,36 @@
+/* HomePage.css */
+.home-container {
+    text-align: center;
+}
+
+.header {
+    background-color: #add8e6; /* Color celeste para el fondo */
+    padding: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px;
+    display: inline-block;
+}
+
+.menu li a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #f0f0f0; /* Fondo gris claro para los botones */
+    border-radius: 10px; /* Esquinas redondeadas */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.menu li a:hover {
+    background-color: #e0e0e0; /* Cambio de color al pasar el mouse */
+}

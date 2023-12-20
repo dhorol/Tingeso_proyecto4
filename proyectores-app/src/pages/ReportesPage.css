@@ -1,0 +1,36 @@
+/* ReportesPage.css */
+.reportes-container {
+    text-align: center;
+}
+
+.reportes-container h2 {
+    background-color: #add8e6; /* Color celeste para el fondo */
+    padding: 20px;
+    border-radius: 15px;
+    color: #333; /* Color del texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+table {
+    margin: auto; /* Centra la tabla */
+    border-collapse: collapse; /* Elimina el espacio entre las celdas */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Borde para las celdas */
+    padding: 8px;
+    text-align: left; /* Alineación del texto en las celdas */
+}
+
+th {
+    background-color: #f0f0f0; /* Fondo gris claro para los encabezados */
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo alterno para las filas */
+}
+
+tr:hover {
+    background-color: #ddd; /* Fondo al pasar el mouse sobre una fila */
+}

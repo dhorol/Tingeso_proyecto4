@@ -1,25 +1,27 @@
 import React from 'react';
 
 const DevolucionList = ({ devoluciones }) => {
+
+    if (!devoluciones) {
+        return <div>Cargando devoluciones...</div>;
+    }
     return (
-        <div>
+        <div className="lista-devoluciones">
             <h2>Lista de Devoluciones</h2>
-            <table className="table">
+            <table className="tabla-estilo">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Fecha de Devolución</th>
-                    <th>Estado</th>
-                    {/* Otros campos necesarios */}
+                    <th>Fecha Devolución</th>
+                    <th>Estado Devolución</th>
+                    <th>ID Préstamo</th>
                 </tr>
                 </thead>
                 <tbody>
                 {devoluciones.map(devolucion => (
                     <tr key={devolucion.id}>
-                        <td>{devolucion.id}</td>
                         <td>{devolucion.fechaDevolucion}</td>
-                        <td>{devolucion.estado}</td>
-                        {/* Otros campos */}
+                        <td>{devolucion.estadoDevolucion}</td>
+                        <td>{devolucion.prestamoId}</td>
                     </tr>
                 ))}
                 </tbody>

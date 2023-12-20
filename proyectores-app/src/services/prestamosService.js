@@ -2,14 +2,7 @@ import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:8080/PyD/prestamos';
 
-const getPrestamos = async () => {
-    try {
-        const response = await axios.get(API_BASE_URL);
-        return response.data;
-    } catch (error) {
-        console.error('Error al obtener los préstamos', error);
-    }
-};
+
 
 const createPrestamo = async (prestamoData) => {
     try {
@@ -20,5 +13,6 @@ const createPrestamo = async (prestamoData) => {
     }
 };
 
-// Exporta las funciones para que puedan ser usadas en otros archivos
-export { getPrestamos, createPrestamo };
+// Otros métodos...
+
+export { createPrestamo};

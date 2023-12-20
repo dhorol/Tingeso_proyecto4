@@ -1,6 +1,9 @@
 import React from 'react';
 
-const ProfesorList = ({ profesores, onDeleteProfesor }) => {
+const ProfesorList = ({ profesores, onDeleteProfesor, onToggleHabilitacion }) => {
+    if (!profesores) {
+        return <div>Cargando profesores...</div>;
+    }
     return (
         <div>
             <h2>Lista de Profesores</h2>
@@ -10,6 +13,7 @@ const ProfesorList = ({ profesores, onDeleteProfesor }) => {
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Departamento</th>
+                    <th>Habilitado</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -19,9 +23,13 @@ const ProfesorList = ({ profesores, onDeleteProfesor }) => {
                         <td>{profesor.id}</td>
                         <td>{profesor.nombre}</td>
                         <td>{profesor.departamento}</td>
+                        <td>{profesor.habilitado ? 'Sí' : 'No'}</td>
                         <td>
                             <button onClick={() => onDeleteProfesor(profesor.id)}>
                                 Eliminar
+                            </button>
+                            <button onClick={() => onToggleHabilitacion(profesor.id)}>
+                                {profesor.habilitado ? 'Deshabilitar' : 'Habilitar'}
                             </button>
                         </td>
                     </tr>

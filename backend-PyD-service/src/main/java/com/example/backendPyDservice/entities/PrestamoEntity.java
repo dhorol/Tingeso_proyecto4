@@ -20,7 +20,7 @@ public class PrestamoEntity {
     private Long id;
 
     private LocalDateTime fechaPrestamo;
-    private String profesorId;  // o ProfesorEntity si usas relaciones
-    private String proyectorId; // o DataProyectorEntity si usas relaciones
+    private Long profesorId;  // o ProfesorEntity si usas relaciones
+    private Long proyectorId; // o DataProyectorEntity si usas relaciones
     private String uso; // Dictado de clases, Reuniones, etc.
 }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DevolucionRepository extends JpaRepository<DevolucionEntity, Long> {
-    // Métodos de consulta personalizados si es necesario
+    DevolucionEntity findByPrestamoId(Long prestamoId);
 }

@@ -1,8 +1,9 @@
+// ProyectoresPage.js
 import React, { useEffect, useState } from 'react';
 import { getProyectores, addProyector, updateProyector, deleteProyector, updateDisponibilidad } from '../services/proyectorService';
 import ProyectorList from '../components/ProyectorList';
 import ProyectorForm from '../components/ProyectorForm';
-
+import './ProyectoresPage.css'; // Importa el archivo CSS
 const ProyectoresPage = () => {
     const [proyectores, setProyectores] = useState([]);
 
@@ -22,7 +23,7 @@ const ProyectoresPage = () => {
     const handleUpdateProyector = async (id) => {
         const proyectorToUpdate = proyectores.find(p => p.id === id);
         if (proyectorToUpdate) {
-            const updatedProyector = await updateProyector(id, { ...proyectorToUpdate, estado: 'Nuevo' });
+            const updatedProyector = await updateProyector(id, { ...proyectorToUpdate, estado: 'Buenas Condiciones' });
             setProyectores(proyectores.map(p => p.id === id ? updatedProyector : p));
         }
     };
@@ -42,15 +43,21 @@ const ProyectoresPage = () => {
     };
 
     return (
-        <div>
-            <h2>Gestión de Proyectores</h2>
-            <ProyectorForm onAddProyector={handleAddProyector} />
-            <ProyectorList
-                proyectores={proyectores}
-                onUpdateProyector={handleUpdateProyector}
-                onDeleteProyector={handleDeleteProyector}
-                onUpdateDisponibilidad={handleUpdateDisponibilidad}
-            />
+        <div className="proyectores-container">
+            <div className="titulo-container">
+                <h2>Gestión de Proyectores</h2>
+            </div>
+            <div className="proyector-form">
+                <ProyectorForm onAddProyector={handleAddProyector} />
+            </div>
+            <div className="proyector-list">
+                <ProyectorList
+                    proyectores={proyectores}
+                    onUpdateProyector={handleUpdateProyector}
+                    onDeleteProyector={handleDeleteProyector}
+                    onUpdateDisponibilidad={handleUpdateDisponibilidad}
+                />
+            </div>
         </div>
     );
 };

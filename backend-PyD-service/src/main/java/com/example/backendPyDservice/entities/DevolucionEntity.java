@@ -21,5 +21,5 @@ public class DevolucionEntity {
 
     private LocalDateTime fechaDevolucion;
     private String estadoDevolucion; // Buenas Condiciones, Con Daños
-    private String prestamoId; // o PrestamoEntity si usas relaciones
+    private Long prestamoId; // o PrestamoEntity si usas relaciones
 }

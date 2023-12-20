@@ -11,6 +11,17 @@ const getDevoluciones = async () => {
     }
 };
 
+const getPrestamosPendientes = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/prestamos/pendientes`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener préstamos pendientes', error);
+        throw error; // Lanza el error para manejarlo en el componente
+    }
+};
+
+
 const createDevolucion = async (devolucionData) => {
     try {
         const response = await axios.post(API_BASE_URL, devolucionData);
@@ -21,4 +32,4 @@ const createDevolucion = async (devolucionData) => {
 };
 
 // Exporta las funciones para que puedan ser usadas en otros archivos
-export { getDevoluciones, createDevolucion };
+export { getDevoluciones, createDevolucion, getPrestamosPendientes };
